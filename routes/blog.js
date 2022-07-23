@@ -7,8 +7,15 @@ router.get('/', function(req, res) {
   res.redirect('/posts');
 });
 
-router.get('/posts', function(req, res) {
-  res.render('posts-list');
+router.get('/posts', async function(req, res) {
+  const posts = await db
+  .getDb()
+  .collection('blog_posts')
+  .find({}, {title: 1, summary: 1,'author.author_name': 1 })
+  .toArray();
+
+  // console.log(post);
+  res.render('posts-list', {posts: posts});
 });
 
 router.get('/new-post', async function(req, res) {
