@@ -1,5 +1,5 @@
 const express = require('express');
-
+const db = require('../database/database');
 const router = express.Router();
 
 router.get('/', function(req, res) {
@@ -11,7 +11,9 @@ router.get('/posts', function(req, res) {
 });
 
 router.get('/new-post', async function(req, res) {
-  res.render('create-post');
+  const authors = await db.getDb().collection('blog_authors').find().toArray();
+  // console.log(authors);
+  res.render('create-post', {authors: authors});
 });
 
 module.exports = router;
