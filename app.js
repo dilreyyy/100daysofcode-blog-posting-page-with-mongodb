@@ -1,8 +1,12 @@
+//npm install
+//npm install mongodb
+
 const path = require('path');
 
 const express = require('express');
 
 const blogRoutes = require('./routes/blog');
+const db = require('./database/database');
 
 const app = express();
 
@@ -22,4 +26,7 @@ app.use(function (error, req, res, next) {
   res.status(500).render('500');
 });
 
-app.listen(3000);
+//establish connection first before listening to port
+db.connectToDatabase().then(function () {
+  app.listen(3000);
+});
