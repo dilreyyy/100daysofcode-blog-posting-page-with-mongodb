@@ -14,8 +14,8 @@
       <address>
         <a href="mailto:<%= post.author.author_email %>"><%= post.author.author_name %></a>
       </address>
-      <time>
-         | <%= post.date %> 
+      <time datetime="<%= post.date %>">
+         | <%= post.humanReadableDate %> 
       </time>
     </section>
     <hr>

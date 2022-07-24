@@ -29,7 +29,18 @@ router.get("/view-post/:post_id", async function (req, res) {
   if(!post){
     return res.render("404");
   }
-  // console.log(post);
+
+  post.humanReadableDate = post.date.toLocaleDateString('en-US',
+    {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+  );
+
+  post.date = post.date.toISOString();
+
   res.render("post-detail", { post: post });
 });
 
