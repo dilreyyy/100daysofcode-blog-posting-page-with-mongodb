@@ -99,6 +99,12 @@ router.post("/edit/:post_id", async function (req, res) {
   res.redirect("/posts");
 });
 
+router.post("/delete/:post_id", async function(req, res){
+  const post_id = new ObjectId(req.params.post_id);
+  await db.getDb().collection('blog_posts').deleteOne({_id: post_id});
+  res.redirect('/posts');
+});
+
 router.get("/");
 
 module.exports = router;
