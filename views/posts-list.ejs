@@ -11,7 +11,7 @@
   <main id="all-posts">
     <h1>All Posts</h1>
     <% if(posts.length === 0){ %> 
-    <h3>No post found, start by <a href="./create-post.ejs">create a new post</h3></a>
+    <h3>No post found, start by <a href="/new-post">create a new post</h3></a>
     <% }else { %> 
     <ol id="posts-list">
       <% for (const post of posts) { %> 

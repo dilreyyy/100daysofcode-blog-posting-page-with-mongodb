@@ -72,7 +72,7 @@ router.get("/edit/:post_id", async function (req, res) {
     .collection("blog_posts")
     .findOne(
       { _id: new ObjectId(postId) },
-      { _id: 1, title: 1, summary: 1, conetent: 1 }
+      { _id: 1, title: 1, summary: 1, content: 1 }
     );
 
   // console.log(post);
